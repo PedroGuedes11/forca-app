@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HS - Página Inicial</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body class="block">
+        
+        <!-- Logo -->
+        <header> 
+            <span>HangScammer</span>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+
+            <!-- Menu -->
+            <div id="nav-bar">
+                
+                <!-- Menu Buttons -->
+                <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+                <div id="nav-buttons">
+
+                    <button onclick="window.location.href='login.html'">
+                        <span><img src="../img/icons/login_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="login icon"></span>
+                        <span>Login</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='register.html'">
+                        <span><img src="../img/icons/person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="register icon"></span>
+                        <span>Registro</span>
+                    </button>
+
+                    <button onclick="window.location.href='forgotpass.html'">
+                        <span><img title="lock icon" src="../img/icons/lock_reset_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Recuperar senha</span>
+                    </button>
+
+                    <button onclick="window.location.href='material-de-apoio.pdf'">
+                        <span><img title="book icon" src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Material de estudo</span>
+                    </button>
+                
+                </div>
+            
+            </div>
+
+            <!-- Title -->
+            <h1>Bem-vindo ao HangScammer!</h1>
+
+            <!-- Homepage Box -->
+            <div id="homepage-box">
+                
+                <!-- Homepage Image -->
+                <div id="homepage-img">
+                    <img src="../img/forca/forca06.png" alt="Homepage Image" width="100">
+                </div>
+
+                <!-- About -->
+                <div id="about">
+                    <h4>Jogue e aprenda de maneira divertida.</h4>
+                    
+                    <p>HangScammer é um jogo que busca ensinar os perigos da internet de forma interativa e divertida, permitindo que os jogadores identifiquem e evitem fraudes online.</p>
+                    <p>Para estudar esses conceitos disponibilizamos um material de estudos <a href="material_de_estudo.pdf">clicando aqui</a>, e o jogo serve como exercicio pratico desse conhecimento.</p>
+                    <p>A jogabilidade é simples: cada fase tem uma palavra a ser adivinhada e todo alfabeto disponivel ao jogador, de inicio o mesmo tem 6 vidas e 1 dica liberada, ao errar uma letra ou ao esgotar o tempo, o jogador perde uma vida.</p>
+                    <p>Quando as vidas chegarem a 4, libera-se a segunda dica, ao chegarem a 2, a terceira é liberada e ao acabarem, o jogador perde a rodada e pode tentar novamente.</p>
+                </div>
+
+                
+            </div>
+
+
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido por Pedro Pinheiro Guedes</p>
+        </footer>
+        <script type="module">
+            import { toggleMenu } from '../js/utils.js';
+            window.toggleMenu = toggleMenu;
+        </script>
+    </body>
+</html>

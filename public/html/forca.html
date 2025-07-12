@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HS - Game</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <!-- Logo -->
+        <header>
+            <span>HangScammer</span>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+
+            <!-- Menu -->
+            <div id="nav-bar">
+
+                <!-- Menu Buttons -->
+                <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+                <div id="nav-buttons">
+
+                    <button onclick="window.location.href='phases.html'">
+                        <span><img title="leaderbord icon" src="../img/icons/stadia_controller_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Fases</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='./profile.html'">
+                        <span><img src="../img/icons/id_card_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="profile icon"></span>
+                        <span>Perfil</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='material-de-apoio.pdf'">
+                        <span><img src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="book icon"></span>
+                        <span>Material de estudo</span>
+                    </button>
+                    
+                    <button onclick="logout()">
+                        <span><img title="logout icon" src="../img/icons/logout_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Sair do perfil</span>
+                    </button>
+                
+                </div>
+            
+            </div>
+            
+            <!-- Game Content -->
+            <div id="game-box">
+                
+                <!-- Hints -->
+                <div id="hints-box">
+
+                    <!-- Prev Button -->
+                    <button id="prevHintBtn">&lt;</button>
+
+                    <!-- Carousel-->
+                    <div id="hint-carousel">
+                        
+                        <!-- Carousel item-->
+                        <div class="hint visible">
+                            <h3>Dica 1 de 3:</h3>
+                            <span id="hint1"></span>
+                        </div>
+
+                        <!-- Carousel item-->
+                        <div class="hint hidden">
+                            <h3>Dica 2 de 3:</h3>
+                            <span id="hint2">Libera com 4 vidas</span>
+                        </div>
+
+                        <!-- Carousel item-->
+                        <div class="hint hidden">
+                            <h3>Dica 3 de 3:</h3>
+                            <span id="hint3">Libera com 2 vidas</span>
+                        </div>
+                    </div>
+
+                    <!-- Next Button -->
+                    <button id="nextHintBtn">&gt;</button>
+
+                </div>
+                
+                <!-- Image, Timer, Attempts and Keyboard -->
+                <div id="image-timer-attempts-keyboard">
+                    
+                    <!-- Keyboard -->
+                    <div id="keyboard">
+                        <div class="keys">
+                            <button id="key-A" onclick="verifyLetter('A')">A</button>
+                            <button id="key-B" onclick="verifyLetter('B')">B</button>
+                            <button id="key-C" onclick="verifyLetter('C')">C</button>
+                            <button id="key-D" onclick="verifyLetter('D')">D</button>
+                            <button id="key-E" onclick="verifyLetter('E')">E</button>
+                            <button id="key-F" onclick="verifyLetter('F')">F</button>
+                            <button id="key-G" onclick="verifyLetter('G')">G</button>
+                            <button id="key-H" onclick="verifyLetter('H')">H</button>
+                            <button id="key-I" onclick="verifyLetter('I')">I</button>
+                            <button id="key-J" onclick="verifyLetter('J')">J</button>
+                            <button id="key-K" onclick="verifyLetter('K')">K</button>
+                            <button id="key-L" onclick="verifyLetter('L')">L</button>
+                            <button id="key-M" onclick="verifyLetter('M')">M</button>
+                            <button id="key-N" onclick="verifyLetter('N')">N</button>
+                            <button id="key-O" onclick="verifyLetter('O')">O</button>
+                            <button id="key-P" onclick="verifyLetter('P')">P</button>
+                            <button id="key-Q" onclick="verifyLetter('Q')">Q</button>
+                            <button id="key-R" onclick="verifyLetter('R')">R</button>
+                            <button id="key-S" onclick="verifyLetter('S')">S</button>
+                            <button id="key-T" onclick="verifyLetter('T')">T</button>
+                            <button id="key-U" onclick="verifyLetter('U')">U</button>
+                            <button id="key-V" onclick="verifyLetter('V')">V</button>
+                            <button id="key-W" onclick="verifyLetter('W')">W</button>
+                            <button id="key-X" onclick="verifyLetter('X')">X</button>
+                            <button id="key-Y" onclick="verifyLetter('Y')">Y</button>
+                            <button id="key-Z" onclick="verifyLetter('Z')">Z</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Attempts, Timer and Keyboard -->
+                    <div id="timer-attempts-image">
+                        
+                        <!-- Timer and Attempts -->
+                        <div id="timer-attempts">
+                            
+                            <!-- Attempts -->
+                            <div id="attempts"></div>
+
+                            <!-- Timer -->
+                            <div id="timer"></div>
+                        
+                        </div>
+
+                        <!-- Hangman Image -->
+                        <div id="image">
+                            <img src="../img/forca/forca00.png" alt="img-forca" id="img-forca">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Secret Word -->
+                <div id="secretword"></div>
+                
+            </div>
+        
+        </main>
+        
+        <!-- Modal -->
+        <div id="popup" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="popup-title"></h2>
+                <p id="popup-message"></p>
+                <div id="modal-buttons">
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido por Pedro Pinheiro Guedes</p>
+        </footer>
+        <script type="module" src="../js/forca.js"></script>
+    </body>
+</html>

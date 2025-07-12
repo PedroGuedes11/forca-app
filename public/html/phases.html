@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HS - Perfil</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <!-- Logo -->
+        <header>
+            <span>HangScammer</span>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+
+            <!-- Menu -->
+            <div id="nav-bar">
+                
+                <!-- Menu buttons -->
+                <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+                
+                <div id="nav-buttons">    
+                    <button onclick="window.location.href='ranking.html'">
+                        <span><img title="leaderbord icon" src="../img/icons/leaderboard_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Ranking</span>
+                    </button>
+                    <button onclick="window.location.href='profile.html'">
+                        <span><img title="profile icon" src="../img/icons/id_card_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Perfil</span>
+                    </button>
+                    <button onclick="window.location.href='material-de-apoio.pdf'">
+                        <span><img title="book icon" src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Material de estudo</span>
+                    </button>
+                    <button onclick="logout()">
+                        <span><img title="logout icon" src="../img/icons/logout_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Sair do perfil</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Title -->
+            <h1>Fases</h1>
+            
+            <!-- Phases Box -->
+            <div id="phases-box">
+                
+                <!-- Subtitle -->
+                <h2>Selecione uma fase abaixo!</h2>
+                
+                <!-- Energy points -->
+                <div id="energy-container">
+                    <span id="energy-label">Pontos de energia: <span id="energy-points"></span></span>
+                </div>
+
+                <!-- Game phases -->
+                <div id="next-prev-btns">
+                    
+                    <button id="prevBtn">
+                        <span><img title="chevron-left icon" src="../img/icons/arrow_back_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Anterior</span>
+                    </button>
+                    
+                    <button id="nextBtn">
+                        <span><img title="chevron-right icon" src="../img/icons/arrow_forward_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Próximo</span>  
+                    </button>
+
+                </div>
+
+                <div id="phases-container">      
+                    <div class="carousel">
+                        <div id="carousel-container">
+                            <!-- As fases serão geradas dinamicamente aqui -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+        </main>
+
+        <!-- Modal -->
+        <div id="popup" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="popup-title"></h2>
+                <p id="popup-message"></p>
+                <div id="modal-buttons">  
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido por Pedro Pinheiro Guedes</p>
+        </footer>
+        <script type="module" src="../js/phases.js"></script>
+    </body>
+</html>

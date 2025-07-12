@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HS - Ranking</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+        
+        <!-- Logo -->
+        <header>
+            <span>HangScammer</span>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+
+            <!-- Menu -->
+            <div id="nav-bar">
+
+                <!-- Menu buttons -->
+                <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+                <div id="nav-buttons">
+
+                    <button onclick="window.location.href='phases.html'">
+                        <span><img src="../img/icons/stadia_controller_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Jogar</span>
+                    </button>
+
+                    <button onclick="window.location.href='profile.html'">
+                        <span><img src="../img/icons/id_card_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Perfil</span>
+                    </button>
+
+                    <button onclick="window.location.href='material-de-apoio.pdf'">
+                        <span><img title="book icon" src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Material de estudo</span>
+                    </button>
+
+                    <button onclick="logout()">
+                            <span><img src="../img/icons/logout_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                            <span>Sair do Perfil</span>
+                    </button>
+                
+                </div>
+            
+            </div>
+
+            <!-- Title -->
+            <h1>Ranking</h1>
+
+            <!-- Ranking box -->
+            <div id="ranking-box">
+                <table border="2" id="ranking-table" >
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>Nome</th>
+                            <th>Pontuação</th>
+                        </tr>                                                
+                    </thead>
+                    <tbody id="ranking-body">
+                        <!-- Os dados do ranking serão preenchidos aqui pelo JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <!-- Modal -->
+        <div id="popup" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="popup-title"></h2>
+                <p id="popup-message"></p>
+                <div id="modal-buttons">  
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido por Pedro Pinheiro Guedes</p>
+        </footer>
+        <script type="module"  src="../js/ranking.js"></script>     
+    </body>
+</html>
+    

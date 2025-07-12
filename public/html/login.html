@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HS - Login</title>
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    </head>
+    
+    <body>
+
+        <!-- Logo -->
+        <header>    
+            <span>HangScammer</span>
+        </header>
+        
+        <!-- Main Content -->
+        <main>
+            <div id="nav-bar">
+                
+                <!-- Menu Buttons -->
+                <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
+                
+                <div id="nav-buttons">
+                    
+                    <button onclick="window.location.href='/'">
+                        <span><img src="../img/icons/home_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="homepage icon"></span>
+                        <span>Homepage</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='register.html'">
+                        <span><img src="../img/icons/person_add_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="register icon"></span>
+                        <span>Registro</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='forgotpass.html'">
+                        <span><img title="lock icon" src="../img/icons/lock_reset_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Recuperar senha</span>
+                    </button>
+                    
+                    <button onclick="window.location.href='material-de-apoio.pdf'">
+                        <span><img title="book icon" src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Material de estudo</span>
+                    </button>
+                
+                </div>
+            
+            </div>
+
+            <!-- Title -->
+            <h1>Login</h1>
+
+            <!-- User Box -->
+            <div id="user-box">
+
+                <!-- Input Form -->
+                <form id="login-form">
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                    <p>
+                        <label for="password">Senha:</label>
+                        <input type="password" id="password" name="password" required>
+                    </p>
+                    <button type="submit">
+                        <span><img src="..\img\icons\login_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" title="login icon"></span>
+                        <span>Entrar</span>
+                    </button>
+
+                    <!-- Option Buttons -->
+                    <div id="login-buttons">
+                        <span>Esqueceu sua senha? <a href="forgotpass.html">Clique aqui</a></span>
+                        <span>Não tem uma conta? <a href="register.html">Registre-se</a></span>
+                        <span>Voltar à <a href="http://localhost:3000/">Pagina inicial</a></span>
+                    </div>
+                
+                </form>
+                
+
+                
+                
+            </div>
+                       
+        </main>
+
+        <!-- Modal -->
+        <div id="popup" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="popup-title"></h2>
+                <p id="popup-message"></p>
+                <div id="modal-buttons">  
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Desenvolvido por Pedro Pinheiro Guedes</p>
+        </footer>
+        <script type="module" src="../js/login.js"></script>
+    </body>
+</html>
