@@ -8,6 +8,7 @@ import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
 import { setup } from "./model/createTables.js";
+import { createPhases } from "./model/createPhases.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ const app = express();
 app.use(express.json());
 
 setup();
+createPhases();
 
 app.use(cors());
 
