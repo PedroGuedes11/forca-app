@@ -47,7 +47,7 @@ CREATE EXTENSION IF NOT EXISTS pg_cron;
 SELECT cron.schedule('regenerate_energy', '*/15 * * * *', $$SELECT regenerate_energy();$$);
 `;
 
-async function setup() {
+export async function setup() {
     try {
         await db.query(createTablesSQL);
         console.log("Tabelas e função criadas com sucesso!");
@@ -64,6 +64,4 @@ async function setup() {
     } finally {
         db.end();
     }
-}
-
-setup();
+};
