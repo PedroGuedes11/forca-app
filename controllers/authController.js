@@ -35,7 +35,7 @@ export const register = async (req, res) => {
                 // Cria um novo usuário no banco de dados
                 createUser(name, email, hashedPassword, (err) => {
                     if (err) {
-                        return handleDatabaseError(err, res, "Erro ao registrar usuário no MySQL");
+                        return handleDatabaseError(err, res, "Erro ao registrar usuário no PostgreSQL");
                     }
                     res.status(201).json({ error: false, message: "Usuário registrado com sucesso!" });
                 });
@@ -58,7 +58,7 @@ export const login = async (req, res) => {
     // Verifica se o email é válido
     findUserByEmail(email, async (err, results) => {
         if (err) {
-            return handleDatabaseError(err, res, "Erro ao buscar usuário no MySQL");
+            return handleDatabaseError(err, res, "Erro ao buscar usuário no PostgreSQL");
         }
         if (results.length === 0) {
             return res.status(401).json({ error: true , message : "Credenciais inválidas." });
@@ -92,7 +92,7 @@ export const forgotPassword = async (req, res) => {
     // Verifica se o email está registrado
     findUserByEmail(email, async (err, results) => {
         if (err) {
-            return handleDatabaseError(err, res, "Erro ao buscar usuário no MySQL");
+            return handleDatabaseError(err, res, "Erro ao buscar usuário no PostgreSQL");
         }
         if (results.length === 0) {
             return res.status(404).json({ error: "Email não encontrado." });
@@ -146,7 +146,7 @@ export const resetPassword = async (req, res) => {
         // Atualiza a senha no banco de dados
         updatePassword(decoded.email, hashedPassword,(err) => {
             if (err) {
-                handleDatabaseError(err, res, "Erro ao atualizar senha no MySQL");
+                handleDatabaseError(err, res, "Erro ao atualizar senha no PostgreSQL");
             }
             res.status(200).json({ error : false ,  message: "Senha redefinida com sucesso!" });
         });
