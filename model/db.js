@@ -12,6 +12,13 @@ const db = new Pool({
     }
 });
 
+// Função para executar consultas SQL
+export const query = (sql, params, callback) => {
+    db.query(sql, params)
+        .then(result => callback(null, result.rows))
+        .catch(err => callback(err, null));
+};
+
 // Verifica se houve erro na conexão
 db.connect((err) => {
     if (err) {
@@ -20,13 +27,6 @@ db.connect((err) => {
     }
     console.log("Conectado ao PostgreSQL!");
 });
-
-// Função para executar consultas SQL
-export const query = (sql, params, callback) => {
-    db.query(sql, params)
-        .then(result => callback(null, result.rows))
-        .catch(err => callback(err, null));
-};
 
 // Cria um novo usuário
 export const createUser = (name, email, password, callback) => {

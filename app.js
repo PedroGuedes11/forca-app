@@ -7,11 +7,15 @@ import { validateToken } from "./middlewares/authMiddlewares.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
+import { setup } from "./model/db.js";
 
 dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+setup();
+
 app.use(cors());
 
 // Configura o caminho absoluto para os arquivos estáticos
