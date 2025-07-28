@@ -11,7 +11,7 @@ export async function apiRequest(endpoint, method = "GET", body = null) {
         headers.Authorization = token;
     }
 
-    const apiUrl = process.env.API_URL || 'http://localhost:3000';
+    const apiUrl = 'https://forca-app.onrender.com';
     try {
         const response = await fetch(`${apiUrl}${endpoint}`, {
             method,
