@@ -12,7 +12,7 @@ const db = new Pool({
 
 export function createPhases(){
     db.query(`
-        insert if not exists into phases (word, hint1, hint2, hint3)
+        insert into phases (word, hint1, hint2, hint3)
             VALUES ('ENGENHARIA SOCIAL',
                     'Tem como base induzir vítimas a revelar informações ou realizar ações sem perceber o risco.',
                     'A arte de exploram a confiança para convencer alguém a compartilhar dados ou dar acesso a sistemas.',
