@@ -7,7 +7,7 @@ import { validateToken } from "./middlewares/authMiddlewares.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import gameRoutes from "./routes/gameRoutes.js";
-import { setup } from "./model/db.js";
+import { setup } from "./model/createTables.js";
 
 dotenv.config();
 
