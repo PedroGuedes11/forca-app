@@ -72,16 +72,15 @@ async function energyDecrement(){
 async function chooseWord(phase) {
     try {
         const response = await apiRequest(`/game/word/${phase}`, "GET");
-        const wordObject = response.wordObj;
 
-        if (!wordObject) {
+        if (!response) {
             throw new Error("Fase inválida ou não encontrada.");
         }
 
-        secretWord = wordObject.word;
-        secretHints[0] = wordObject.hint1;
-        secretHints[1] = wordObject.hint2;
-        secretHints[2] = wordObject.hint3;
+        secretWord = response.word;
+        secretHints[0] = response.hint1;
+        secretHints[1] = response.hint2;
+        secretHints[2] = response.hint3;
         dynamicList = Array(secretWord.length).fill("_");
         if (secretWord.includes(" ")) {
             const indexBlankSpace = secretWord.indexOf(" ");
