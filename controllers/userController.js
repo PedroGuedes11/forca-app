@@ -11,7 +11,7 @@ export const updateCurrentPhase = (req, res) => {
 
     updatePhase(req.user.id, newPhase, (err) => {
         if (err) {
-            return handleDatabaseError(err, res, "Erro ao atualizar fase no MySQL");
+            return handleDatabaseError(err, res, "Erro ao atualizar fase no PostgresSQL");
         }
         return res.status(200).json({ error : false , message: "Fase atualizada com sucesso!" });
     });
@@ -25,7 +25,7 @@ export const updateUserInfo = (req, res) => {
 
     updateUser(userId, name, email, (err) => {
         if (err) {
-            return handleDatabaseError(err, res, "Erro ao atualizar informações do usuário no MySQL");
+            return handleDatabaseError(err, res, "Erro ao atualizar informações do usuário no PostgresSQL");
         }
         return res.status(200).json({ error: false, message: "Informações atualizadas com sucesso!" });
     });
@@ -36,7 +36,7 @@ export const getUserInfos = async (req, res) => {
     const userId = req.body.id;
     findUserById(userId, async (err, results) => {
         if (err) {
-            return handleDatabaseError(err, res, "Erro ao buscar usuário no MySQL");
+            return handleDatabaseError(err, res, "Erro ao buscar usuário no PostgresSQL");
         }
         if (results.length === 0) {
             return res.status(401).json({ error: true , message : "Email nao encontrado" });

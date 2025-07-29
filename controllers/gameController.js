@@ -5,7 +5,7 @@ import { handleDatabaseError } from "../public/js/utils.js";
 export const getRanking = (req, res) => {
     getAllUsersOrderByPhase(20,(err, results) => {
         if (err) {
-            return handleDatabaseError(err, res, "Error fetching ranking from MySQL");
+            return handleDatabaseError(err, res, "Erro ao pegar ranking no PostgresSQL");
         } 
         if (!results || results.length === 0) {
             return res.status(200).json([]);
@@ -24,7 +24,7 @@ export const getRanking = (req, res) => {
 export const getPhasesLength = (req,res) =>{
     getPhasesLen((err,results) => {
         if (err) {
-            return handleDatabaseError(err, res, "Error fetching phases length from MySQL");
+            return handleDatabaseError(err, res, "Erro ao pegar numero de fases no PostgresSQL");
         } 
         if (!results || results.length === 0) {
             return res.status(200).json([]);
@@ -41,7 +41,7 @@ export const getWord = (req, res) => {
     }
     getWordById(phaseId,(err,results)=>{
         if(err){
-            return handleDatabaseError(err, res, "Error fetching ranking from MySQL");
+            return handleDatabaseError(err, res, "Erro ao pegar palavra no PostgresSQL");
         }
         if(!results || results.length === 0){
             return res.status(200).json([]);

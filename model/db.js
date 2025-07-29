@@ -75,7 +75,7 @@ export const getAllUsersOrderByPhase = (limit, callback) => {
 
 // Recebe o tamanho da lista de fases
 export const getPhasesLen = (callback) => {
-    query("SELECT MAX(id) AS count FROM phases;", callback);
+    query("SELECT COUNT(*) FROM phases;", callback);
 }
 
 // Recebe a palavra da fase e dicas correspondentes ao id

@@ -16,14 +16,14 @@ export const register = async (req, res) => {
     // Verifica se o email já está registrado
     findUserByEmail(email, async (err, emailResults) => { 
         if (err) {
-            handleDatabaseError(err, res, "Erro ao verificar email no MySQL");
+            handleDatabaseError(err, res, "Erro ao verificar email no PostgresSQL");
         }
         if (emailResults.length > 0) {
             return res.status(400).json({ error: true, message : "Email já registrado." });
         }
         findUserByName(name, async (err, nameResults) => {
             if(err){
-                handleDatabaseError(err, res, "Erro ao verificar email no MySQL");
+                handleDatabaseError(err, res, "Erro ao verificar nome no PostgresSQL");
             }
             if (nameResults.length > 0){
                 return res.status(400).json({ error: true, message : "Nome já registrado." });
