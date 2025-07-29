@@ -12,13 +12,6 @@ const db = new Pool({
     }
 });
 
-// Função para executar consultas SQL
-export const query = (sql, params, callback) => {
-    db.query(sql, params)
-        .then(result => callback(null, result.rows))
-        .catch(err => callback(err, null));
-};
-
 // Verifica se houve erro na conexão
 db.connect((err) => {
     if (err) {
@@ -29,69 +22,102 @@ db.connect((err) => {
 });
 
 // Cria um novo usuário
-export const createUser = (name, email, password, callback) => {
-    query("INSERT INTO users (name, email, password) VALUES ($1, $2, $3)", [name, email, password], callback);
+export const createUser = async (name, email, password) => {
+    const result = await db.query(
+        "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *",
+        [name, email, password]
+    );
+    return result.rows[0];
 };
 
 // Encontra um usuário pelo email
-export const findUserByEmail = (email, callback) => {
-    query("SELECT * FROM users WHERE email = $1", [email], callback);
+export const findUserByEmail = async (email) => {
+    const result = await db.query("SELECT * FROM users WHERE email = $1", [email]);
+    return result.rows;
 };
 
 // Encontra um usuário pelo id
-export const findUserById = (id, callback) => {
-    query("SELECT * FROM users WHERE id = $1", [id], callback);
+export const findUserById = async (id) => {
+    const result = await db.query("SELECT * FROM users WHERE id = $1", [id]);
+    return result.rows[0];
 };
 
-//Encontra um usuario pelo nome
-export const findUserByName = (name, callback) => {
-    query("SELECT * FROM users WHERE name = $1", [name], callback);
-}
+// Encontra um usuário pelo nome
+export const findUserByName = async (name) => {
+    const result = await db.query("SELECT * FROM users WHERE name = $1", [name]);
+    return result.rows;
+};
 
 // Atualiza as informações do usuário
-export const updateUser = (id, name, email, callback) => {
-    query("UPDATE users SET name = $1, email = $2 WHERE id = $3", [name, email, id], callback);
+export const updateUser = async (id, name, email) => {
+    const result = await db.query(
+        "UPDATE users SET name = $1, email = $2 WHERE id = $3 RETURNING *",
+        [name, email, id]
+    );
+    return result.rows[0];
 };
 
 // Atualiza a senha do usuário
-export const updatePassword = (email, password, callback) => {
-    query("UPDATE users SET password = $1 WHERE email = $2", [password, email], callback);
+export const updatePassword = async (email, password) => {
+    const result = await db.query(
+        "UPDATE users SET password = $1 WHERE email = $2 RETURNING *",
+        [password, email]
+    );
+    return result.rows[0];
 };
 
 // Deleta um usuário
-export const deleteUser = (id, callback) => {
-    query("DELETE FROM users WHERE id = $1", [id], callback);
-}
+export const deleteUser = async (id) => {
+    await db.query("DELETE FROM users WHERE id = $1", [id]);
+    return true;
+};
 
 // Atualiza a fase atual do usuário
-export const updatePhase = (id, phase, callback) => {
-    query("UPDATE users SET current_phase = $1 WHERE id = $2", [phase, id], callback);
+export const updatePhase = async (id, phase) => {
+    const result = await db.query(
+        "UPDATE users SET current_phase = $1 WHERE id = $2 RETURNING *",
+        [phase, id]
+    );
+    return result.rows[0];
 };
 
 // Recebe a lista de usuários com limite para o ranking
-export const getAllUsersOrderByPhase = (limit, callback) => {
-    query("SELECT * FROM users ORDER BY current_phase DESC LIMIT $1", [limit], callback);
+export const getAllUsersOrderByPhase = async (limit) => {
+    const result = await db.query(
+        "SELECT * FROM users ORDER BY current_phase DESC LIMIT $1",
+        [limit]
+    );
+    return result.rows;
 };
 
 // Recebe o tamanho da lista de fases
-export const getPhasesLen = (callback) => {
-    query("SELECT COUNT(*) FROM phases;", callback);
-}
+export const getPhasesLen = async () => {
+    const result = await db.query("SELECT COUNT(*) FROM phases;");
+    return result.rows[0].count;
+};
 
 // Recebe a palavra da fase e dicas correspondentes ao id
-export const getWordById = (id, callback) => {
-    query("SELECT * FROM phases WHERE id = $1", [id], callback);
-}
+export const getWordById = async (id) => {
+    const result = await db.query("SELECT * FROM phases WHERE id = $1", [id]);
+    return result.rows;
+};
 
 // Decrementa a energia do usuário
-export const decrementUserEnergy = (id, callback) => {
-    query("UPDATE users SET energy = energy - 1 WHERE id = $1 AND energy > 0", [id], callback);
+export const decrementUserEnergy = async (id) => {
+    const result = await db.query(
+        "UPDATE users SET energy = energy - 1 WHERE id = $1 AND energy > 0 RETURNING *",
+        [id]
+    );
+    return result.rows[0];
 };
 
 // Incrementa a energia do usuário
-export const incrementUserEnergy = (id, callback) => {
-    query("UPDATE users SET energy = energy + 1 WHERE id = $1", [id], callback);
+export const incrementUserEnergy = async (id) => {
+    const result = await db.query(
+        "UPDATE users SET energy = energy + 1 WHERE id = $1 RETURNING *",
+        [id]
+    );
+    return result.rows[0];
 };
 
-// Exporta a conexão do banco de dados como padrão
 export default db;
