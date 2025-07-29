@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS users (
     password VARCHAR(255) NOT NULL,
     current_phase INTEGER DEFAULT 1,
     energy INTEGER DEFAULT 5,
-    last_energy_update TIMESTAMP DEFAULT NOW() NOT NULL,
+    last_energy_update TIMESTAMP DEFAULT NOW() NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS phases (
