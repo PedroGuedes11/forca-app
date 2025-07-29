@@ -73,7 +73,7 @@ async function loadUserEnergy() {
 async function loadPhases(user) {
     try {
         const response = await apiRequest(`/game/phases-length`,"GET");
-        const lenPhases = response[0].count;
+        const lenPhases = response.count;
         const phasesContainer = document.getElementById("carousel-container");
         phasesContainer.innerHTML = "";
 
