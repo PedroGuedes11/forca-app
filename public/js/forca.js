@@ -231,7 +231,7 @@ function verifyEndOfGame() {
         incrementEnergy(); // Reincrementa a energia do usuário
         clearInterval(timer); // Para o timer
         disableKeyboard(); // Desativa o teclado
-        showMessage("PARABÉNS!", "Você venceu! a palavra era: "+secretWord,["phases.html","Escolher outra fase","ranking.html","Ver Ranking"]);
+        showMessage("PARABÉNS!", "Você venceu! a palavra era: "+secretWord,["phases.html","Escolher outra fase","forca.html?phase="+(phase+1),"Proxima fase"]);
     } else if (attempts === 0) {
         clearInterval(timer); // Para o timer
         disableKeyboard(); // Desativa o teclado
