@@ -1,7 +1,5 @@
 import { getAllUsersOrderByPhase , getPhasesLen , getWordById } from "../model/db.js";
-import { handleDatabaseError } from "../public/js/utils.js";
 
-/// Função para obter o ranking dos jogadores
 // Função para obter o ranking dos jogadores
 export const getRanking = async (req, res) => {
     try {

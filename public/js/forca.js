@@ -224,7 +224,7 @@ function startTimer() {
 function verifyEndOfGame() {
     const phase = getPhaseFromURL();
     const user = JSON.parse(localStorage.getItem("user"));
-    if (dynamicList.join("") === Array(secretWord).join("-")) {
+    if (dynamicList.join("") === secretWord) {
         if (phase === user.current_phase){
             updateLocalStorage(); //Atualiza o Local Storages
             updateCurrentPhaseInDatabase() // Atualiza a fase no banco de dados

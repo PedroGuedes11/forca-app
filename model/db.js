@@ -12,15 +12,6 @@ const db = new Pool({
     }
 });
 
-// Verifica se houve erro na conexão
-db.connect((err) => {
-    if (err) {
-        console.error("Erro ao conectar ao PostgreSQL:", err);
-        return;
-    }
-    console.log("Conectado ao PostgreSQL!");
-});
-
 // Cria um novo usuário
 export const createUser = async (name, email, password) => {
     const result = await db.query(
@@ -105,7 +96,7 @@ export const getWordById = async (id) => {
 // Decrementa a energia do usuário
 export const decrementUserEnergy = async (id) => {
     const result = await db.query(
-        "UPDATE users SET energy = energy - 1 WHERE id = $1 AND energy > 0 RETURNING *",
+        "UPDATE users SET energy = energy - 1, last_energy_update = NOW() WHERE id = $1 AND energy > 0 RETURNING *",
         [id]
     );
     return result.rows[0];
@@ -114,7 +105,7 @@ export const decrementUserEnergy = async (id) => {
 // Incrementa a energia do usuário
 export const incrementUserEnergy = async (id) => {
     const result = await db.query(
-        "UPDATE users SET energy = energy + 1 WHERE id = $1 RETURNING *",
+        "UPDATE users SET energy = energy + 1, last_energy_update = NOW() WHERE id = $1 RETURNING *",
         [id]
     );
     return result.rows[0];

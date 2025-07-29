@@ -37,5 +37,5 @@ export function createPhases(){
                     'Tem como base induzir vítimas a revelar informações ou realizar ações sem perceber o risco.',
                     'A base da engenharia social: induzir vítimas a revelar informações ou realizar ações sem per.',
                     'A base da engenharia social: induzir vítimas a revelar informações ou realizar ações sem per.'
-                    ) ON CONFLICT (id) DO NOTHING;;`
+                    );`
 )}

@@ -1,4 +1,4 @@
-import { apiRequest , showMessage, toggleMenu } from "./utils.js ";
+import { apiRequest , showMessage , toggleMenu } from "./utils.js";
 
 // Menu hamburger
 window.toggleMenu = toggleMenu;

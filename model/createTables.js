@@ -61,7 +61,5 @@ export async function setup() {
         }
     } catch (err) {
         console.error("Erro ao criar tabelas ou função:", err);
-    } finally {
-        db.end();
     }
 };

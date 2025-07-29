@@ -28,7 +28,7 @@ export const updateUserInfo = async (req, res) => {
 
 // Função para obter as informações do usuário
 export const getUserInfos = async (req, res) => {
-    const userId = req.body.id;
+    const userId = req.user.id;
     try {
         const user = await findUserById(userId);
         if (!user) {
