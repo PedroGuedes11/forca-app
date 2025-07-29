@@ -48,7 +48,7 @@ async function loadUserEnergy() {
                 if (secondsLeft <= 0) {
                     timerSpan.textContent = "Regenerando...";
                     clearInterval(energyInterval);
-                    setTimeout(loadUserEnergy, 2000);
+                    setTimeout(loadUserEnergy, 15000);
                     return;
                 }
                 const min = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
