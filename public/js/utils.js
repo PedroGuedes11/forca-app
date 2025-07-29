@@ -1,8 +1,3 @@
-// Lida com erros ndo banco de dados
-export const handleDatabaseError = (err, res, message) => {
-    res.status(500).json({ err , message : message });
-};
-
 // API para requisiçoes no banco de dados
 export async function apiRequest(endpoint, method = "GET", body = null) {
     const token = localStorage.getItem("token");

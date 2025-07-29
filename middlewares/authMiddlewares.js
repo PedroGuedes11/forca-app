@@ -1,4 +1,4 @@
-import { query } from "../model/db.js";
+import db from "../model/db.js";
 import jwt from "jsonwebtoken";
 const { verify } = jwt;
 
@@ -23,24 +23,24 @@ export const validateToken = (req, res, next) => {
 };
 
 // Middleware para verificar se o usuário está autenticado e se o ID é válido
-export const verifyUser = (req, res, next) => {
+export const verifyUser = async (req, res, next) => {
     if (!req.user || !req.user.id) {
         return res.status(400).json({ error: "Usuário não autenticado ou ID inválido." });
     }
 
     const userId = req.user.id;
 
-    query("SELECT * FROM users WHERE id = ?", [userId], (err, results) => {
-        if (err) {
-            console.error("Erro ao verificar usuário no MySQL:", err);
-            return res.status(500).json({ error: "Erro interno do servidor." });
-        }
+    try {
+        const result = await db.query("SELECT * FROM users WHERE id = $1", [userId]);
 
-        if (results.length === 0) {
+        if (result.rows.length === 0) {
             return res.status(404).json({ error: "Usuário não encontrado." });
         }
 
-        req.user = results[0];
+        req.user = result.rows[0];
         next();
-    });
+    } catch (err) {
+        console.error("Erro ao verificar usuário no PostgreSQL:", err);
+        return res.status(500).json({ error: "Erro interno do servidor." });
+    }
 };
