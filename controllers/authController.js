@@ -37,10 +37,10 @@ export const register = async (req, res) => {
                     if (err) {
                         return handleDatabaseError(err, res, "Erro ao registrar usuário no PostgreSQL");
                     }
-                    res.status(201).json({ error: false, message: "Usuário registrado com sucesso!" });
+                    return res.status(201).json({ error: false, message: "Usuário registrado com sucesso!" });
                 });
             } catch (error) {
-                res.status(500).json({ error: true, message: "Erro ao registrar usuário." });
+                return res.status(500).json({ error: true, message: "Erro ao registrar usuário." });
             }
         });
     });
@@ -75,7 +75,7 @@ export const login = async (req, res) => {
         // Gera um token JWT
         const token = sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "1h" });
 
-        res.status(200).json({
+        return res.status(200).json({
             error: false,
             message: "Login bem-sucedido!",
             user: { id: user.id, name: user.name, email: user.email, current_phase: user.current_phase , energy: user.energy },
@@ -122,9 +122,9 @@ export const forgotPassword = async (req, res) => {
                 html: `<p>Clique no link abaixo para redefinir sua senha:</p><a href="${resetLink}">${resetLink}</a>`,
             });
 
-            res.status(200).json({ error: false, message: "Instruções enviadas para o email." });
+            return res.status(200).json({ error: false, message: "Instruções enviadas para o email." });
         } catch (error) {
-            res.status(500).json({ error: true , message : "Erro ao enviar email." });
+            return res.status(500).json({ error: true , message : "Erro ao enviar email." });
         }
     });
 };
@@ -148,10 +148,10 @@ export const resetPassword = async (req, res) => {
             if (err) {
                 handleDatabaseError(err, res, "Erro ao atualizar senha no PostgreSQL");
             }
-            res.status(200).json({ error : false ,  message: "Senha redefinida com sucesso!" });
+            return res.status(200).json({ error : false ,  message: "Senha redefinida com sucesso!" });
         });
     } catch (error) {
-        res.status(400).json({ error: true , message : "Token inválido ou expirado." });
+        return res.status(400).json({ error: true , message : "Token inválido ou expirado." });
     }
 };
 

@@ -16,7 +16,7 @@ export const getRanking = (req, res) => {
             name: player.name,
             current_phase: player.current_phase,
         }));
-        res.status(200).json(ranking);
+        return res.status(200).json(ranking);
     });
 };
 
@@ -29,7 +29,7 @@ export const getPhasesLength = (req,res) =>{
         if (!results || results.length === 0) {
             return res.status(200).json([]);
         }
-        res.status(200).json(results);
+        return res.status(200).json(results);
     });
 };
 
@@ -47,7 +47,7 @@ export const getWord = (req, res) => {
             return res.status(200).json([]);
         }
         const wordObj = results[0];
-        res.status(200).json({
+        return res.status(200).json({
             error: false,
             message: "Fase recebida com sucesso!",
             wordObj: { word: wordObj.word, hint1: wordObj.hint1, hint2: wordObj.hint2 , hint3 : wordObj.hint3 },

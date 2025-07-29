@@ -13,7 +13,7 @@ export const updateCurrentPhase = (req, res) => {
         if (err) {
             return handleDatabaseError(err, res, "Erro ao atualizar fase no MySQL");
         }
-        res.status(200).json({ error : false , message: "Fase atualizada com sucesso!" });
+        return res.status(200).json({ error : false , message: "Fase atualizada com sucesso!" });
     });
 };
 
@@ -27,7 +27,7 @@ export const updateUserInfo = (req, res) => {
         if (err) {
             return handleDatabaseError(err, res, "Erro ao atualizar informações do usuário no MySQL");
         }
-        res.status(200).json({ error: false, message: "Informações atualizadas com sucesso!" });
+        return res.status(200).json({ error: false, message: "Informações atualizadas com sucesso!" });
     });
 };
 
@@ -42,7 +42,7 @@ export const getUserInfos = async (req, res) => {
             return res.status(401).json({ error: true , message : "Email nao encontrado" });
         }
         const user = results[0]; // Assume que o primeiro resultado é o usuário
-        res.status(200).json({
+        return res.status(200).json({
             error: false,
             message: "Informaçoes recebidas",
             user: { id: user.id, name: user.name, email: user.email, current_phase: user.current_phase },
@@ -71,7 +71,7 @@ export const getUserEnergy = (req, res) => {
             secondsToNext = Math.max(0, 15 * 60 - diff); // 15 minutos = 900 segundos
         }
 
-        res.status(200).json({
+        return res.status(200).json({
             current_energy,
             max_energy,
             secondsToNext
@@ -92,10 +92,10 @@ export const decrementEnergy = (req, res) => {
                 if (err2) {
                     return res.status(500).json({ error: true, message: "Erro ao decrementar energia." });
                 }
-                res.status(200).json({ error: false, message: "Energia decrementada com sucesso!" });
+                return res.status(200).json({ error: false, message: "Energia decrementada com sucesso!" });
             });
         } else {
-            res.status(400).json({ error: true, message: "Energia insuficiente." });
+            return res.status(400).json({ error: true, message: "Energia insuficiente." });
         }
     });
 };
@@ -114,7 +114,7 @@ export const incrementEnergy = (req, res) => {
                 if (err2) {
                     return res.status(500).json({ error: true, message: "Erro ao incrementar energia." });
                 }
-                res.status(200).json({ error: false, message: "Energia incrementada com sucesso!" });
+                return res.status(200).json({ error: false, message: "Energia incrementada com sucesso!" });
             });
         } else {
             console.log("Energia já está no máximo.");

@@ -35,7 +35,7 @@ function getTokenFromURL() {
     const token = urlParams.get("token");
     if (!token) {
         alert("Nenhum token recebido");
-        window.location.href = "http://localhost:3000/";
+        window.location.href = "https://forca-app.onrender.com";
     }
     return token;
 }
