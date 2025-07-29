@@ -12,7 +12,7 @@ const db = new Pool({
 
 export async function createPhases() {
     // Remove todas as fases existentes
-    await db.query("DELETE FROM phases;");
+    await db.query("TRUNCATE TABLE phases RESTART IDENTITY;");
 
     // Insere as fases novas
     await db.query(`
