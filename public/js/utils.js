@@ -44,3 +44,9 @@ export const toggleMenu = function() {
     const navButtons = document.getElementById('nav-buttons');
     navButtons.classList.toggle('menu-open'); 
 };
+
+// Tutorial da pagina
+export const toggleTutorial = function() {
+    const tutorial = document.getElementById('page-tutorial');
+    tutorial.classList.toggle('hidden');
+};

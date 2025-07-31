@@ -29,7 +29,7 @@
 
                     <button onclick="window.location.href='phases.html'">
                         <span><img title="play icon" src="../img/icons/stadia_controller_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
-                        <span>Jogar</span>
+                        <span>Escolher uma fase</span>
                     </button>
 
                     <button onclick="window.location.href='ranking.html'">
@@ -56,51 +56,73 @@
             
             <!-- Profile box -->
             <div id="profile-box">
-
-                <!-- Infos -->
-                <div class="info">
-                    
-                    <h3>Informações do usuário</h3>
-                    
-                    <div class="userInfoCard current">
-                        <span class="title">ID:</span>
-                        <span id="userId"></span>
+                
+                <!-- Page Tutorial -->
+                <div id="page-tutorial-container">
+                    <button id="tutorial-btn" onclick="toggleTutorial()">
+                        <span><img title="help icon" src="../img/icons/info_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Precisa de ajuda?</span>
+                    </button>
+                    <div id="page-tutorial" class="hidden">
+                        <ul>
+                            <h3>Nesta pagina voce pode:</h3>
+                            <li>Visualizar seu ID, seu nome de usuário, seu e-mail, sua fase atual e sua energia atual.</li>
+                            <li>Alterar seu nome de usuário, seu e-mail ou ambos.</li>
+                            <li>Acessar as fases, o ranking, o material de estudos ou fazer logout através do menu.</li>
+                            <br>
+                            <h3>Importante</h3>
+                            <li>Para mudar sua senha saia do perfil e clique em "Recuperar senha" no menu.</li>
+                        </ul>
                     </div>
-                    <div class="userInfoCard current">
-                        <span class="title">Email:</span>
-                        <span id="userEmail"></span>
-                    </div>
-                    <div class="userInfoCard current">
-                        <span class="title">Nome:</span>
-                        <span id="userName"></span>
-                    </div>
-                    <div class="userInfoCard current">
-                        <span class="title">Fase atual:</span>
-                        <span id="currentPhase"></span>
-                    </div>
-                    <div class="userInfoCard current">
-                        <span class="title">Energia atual:</span>
-                        <span id="currentEnergy"></span>
-                    </div>
-
                 </div>
 
-                <!-- Update Info -->
-                <div class="info">
-                    <h3>Alterar Informações</h3>
-                    <div class="userInfoCard update">
-                        <label for="newName">Novo nome:</label>
-                        <input type="text" id="newName">
-                    </div>
-                    <div class="userInfoCard update">
-                        <label for="newEmail">Novo email:</label>
-                        <input type="email" id="newEmail">
-                    </div>
-                    <button id="updateInfo" onclick="updateUserInfos()">
-                        <span><img title="save icon" src="../img/icons/save_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
-                        <span>Salvar alteraçoes</span></button>
-                </div>
+                <!-- Info Box -->
+                <div id="info-box">
 
+                    <!-- Infos -->
+                    <div class="info">
+                        
+                        <h3>Informações do usuário</h3>
+                        
+                        <div class="userInfoCard current">
+                            <span class="title">ID:</span>
+                            <span id="userId"></span>
+                        </div>
+                        <div class="userInfoCard current">
+                            <span class="title">Email:</span>
+                            <span id="userEmail"></span>
+                        </div>
+                        <div class="userInfoCard current">
+                            <span class="title">Nome:</span>
+                            <span id="userName"></span>
+                        </div>
+                        <div class="userInfoCard current">
+                            <span class="title">Fase atual:</span>
+                            <span id="currentPhase"></span>
+                        </div>
+                        <div class="userInfoCard current">
+                            <span class="title">Energia atual:</span>
+                            <span id="currentEnergy"></span>
+                        </div>
+
+                    </div>
+
+                    <!-- Update Info -->
+                    <div class="info">
+                        <h3>Alterar Informações</h3>
+                        <div class="userInfoCard update">
+                            <label for="newName">Novo nome:</label>
+                            <input type="text" id="newName">
+                        </div>
+                        <div class="userInfoCard update">
+                            <label for="newEmail">Novo email:</label>
+                            <input type="email" id="newEmail">
+                        </div>
+                        <button id="updateInfo" onclick="updateUserInfos()">
+                            <span><img title="save icon" src="../img/icons/save_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                            <span>Salvar alteraçoes</span></button>
+                    </div>
+                </div>
             </div>
 
         </main>

@@ -1,4 +1,4 @@
-import { apiRequest , toggleMenu } from "./utils.js";
+import { apiRequest , toggleMenu , toggleTutorial } from "./utils.js";
 
 // Carrega o ranking na tela
 async function loadRanking() {
@@ -30,6 +30,9 @@ window.logout = function (){
 
 // Menu hamburger
 window.toggleMenu = toggleMenu;
+
+// Tutorial da pagina
+window.toggleTutorial = toggleTutorial;
 
 // Chama a função ao carregar a página
 window.onload = loadRanking;

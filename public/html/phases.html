@@ -20,6 +20,8 @@
         <!-- Main Content -->
         <main>
 
+                
+
             <!-- Menu -->
             <div id="nav-bar">
                 
@@ -27,13 +29,13 @@
                 <button id="hamburger" onclick="toggleMenu()">☰ Menu</button>
                 
                 <div id="nav-buttons">    
-                    <button onclick="window.location.href='ranking.html'">
-                        <span><img title="leaderbord icon" src="../img/icons/leaderboard_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
-                        <span>Ranking</span>
-                    </button>
                     <button onclick="window.location.href='profile.html'">
                         <span><img title="profile icon" src="../img/icons/id_card_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
                         <span>Perfil</span>
+                    </button>
+                    <button onclick="window.location.href='ranking.html'">
+                        <span><img title="leaderbord icon" src="../img/icons/leaderboard_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Ranking</span>
                     </button>
                     <button onclick="window.location.href='material-de-apoio.pdf'">
                         <span><img title="book icon" src="../img/icons/menu_book_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
@@ -51,6 +53,27 @@
             
             <!-- Phases Box -->
             <div id="phases-box">
+
+                <!-- Page Tutorial -->
+                <div id="page-tutorial-container">
+                    <button id="tutorial-btn" onclick="toggleTutorial()">
+                        <span><img title="help icon" src="../img/icons/info_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Precisa de ajuda?</span>
+                    </button>
+                    <div id="page-tutorial" class="hidden">
+                        <ul>
+                            <h3>Nesta pagina voce pode:</h3>
+                            <li>Selecionar uma fase para jogar.</li> 
+                            <li>Acessar seu perfil, o ranking, o material de estudo ou fazer logout através do menu acima.</li>
+                            <li>Usar os botões de navegação abaixo para percorrer entre as fases disponíveis.</li>
+                            <li>Ver quantos pontos de energia você tem disponíveis para jogar e quando o próximo ponto será regenerado.</li>
+                            <br>
+                            <h3>Informações:</h3>
+                            <li>Pontos de energia são necessários para jogar uma fase. Cada fase custa 1 ponto e se passar de fase, ele é recuperado.</li>
+                            <li>Pontos de energia regeneram automaticamente, um por um, a cada 15 minutos após sua última jogada.</li>
+                        </ul>
+                    </div>
+                </div>
                 
                 <!-- Subtitle -->
                 <h2>Selecione uma fase abaixo!</h2>

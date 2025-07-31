@@ -29,7 +29,7 @@
 
                     <button onclick="window.location.href='phases.html'">
                         <span><img src="../img/icons/stadia_controller_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
-                        <span>Jogar</span>
+                        <span>Escolher uma fase</span>
                     </button>
 
                     <button onclick="window.location.href='profile.html'">
@@ -56,6 +56,22 @@
 
             <!-- Ranking box -->
             <div id="ranking-box">
+
+                <!-- Page Tutorial -->
+                <div id="page-tutorial-container">
+                    <button id="tutorial-btn" onclick="toggleTutorial()">
+                        <span><img title="help icon" src="../img/icons/info_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"></span>
+                        <span>Precisa de ajuda?</span>
+                    </button>
+                    <div id="page-tutorial" class="hidden">
+                        <ul>
+                            <h3>Nesta pagina voce pode:</h3>
+                            <li>Visualizar o ranking dos jogadores.</li> 
+                            <li>Acessar as fases, seu perfil, o material de estudos ou fazer logout através do menu.</li>
+                        </ul>
+                    </div>
+                </div>
+
                 <table border="2" id="ranking-table" >
                     <thead>
                         <tr>

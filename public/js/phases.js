@@ -1,4 +1,4 @@
-import { apiRequest, toggleMenu } from "./utils.js";
+import { apiRequest, toggleMenu , toggleTutorial } from "./utils.js";
 
 // Mostrar o perfil do usuário
 async function showPhases() {
@@ -144,6 +144,8 @@ window.logout = function (){
 
 // Menu hamburger
 window.toggleMenu = toggleMenu;
+
+window.toggleTutorial = toggleTutorial;
 
 // Chama a função ao carregar a página
 window.onload = showPhases;

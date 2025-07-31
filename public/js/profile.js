@@ -1,4 +1,4 @@
-import { showMessage , apiRequest , toggleMenu } from "./utils.js";
+import { showMessage , apiRequest , toggleMenu , toggleTutorial } from "./utils.js";
 
 // função para mostrar o perfil do usuário
 async function showProfile() {
@@ -58,7 +58,11 @@ window.logout = function (){
     window.location.href = "login.html";
 }
 
+// Menu hamburger
 window.toggleMenu = toggleMenu;
+
+// Tutorial da pagina
+window.toggleTutorial = toggleTutorial;
 
 // Chama a função ao carregar a página
 window.onload = showProfile;
