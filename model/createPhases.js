@@ -218,7 +218,7 @@ export async function createPhases() {
                 'Consiste em, antes de clicar, passar o mouse e analisar',
                 'Pressupõe que links suspeitos podem ter erros sutis ou redirecionamentos falsos',
                 'Segundo essa técnica é preferível acessar sites digitando a URL manualmente'
-            ),
+            )
     `);
 
     console.log("Fases criadas com sucesso!");
