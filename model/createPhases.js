@@ -28,7 +28,7 @@ export async function createPhases() {
                 'Erros de usuários podem comprometer sistemas',
                 'Treinamento ajuda a minimizar riscos'
             ),
-            ('PERSUASÃO',
+            ('PERSUASAO',
                 'Usada para influenciar decisões',
                 'Seus 7 princípios são comumente aplicados em golpes digitais sofisticados',
                 'Fundamental para entender como golpes manipulam emoções.'
@@ -124,7 +124,7 @@ export async function createPhases() {
                 'Podem conter links maliciosos',
                 'Prejudicam produtividade e segurança'
             ),
-            ('SEXTORSÃO',
+            ('SEXTORSAO',
                 'Chantagem envolvendo conteúdos íntimos',
                 'Pode usar engenharia social para obter fotos',
                 'Crime sério com impacto psicológico'
@@ -199,12 +199,12 @@ export async function createPhases() {
                 'Facilita o uso de senhas fortes e variadas',
                 'Ajuda a evitar reutilização e esquecimento'
             ),
-            ('EDUCAÇÃO DIGITAL',
+            ('EDUCACAO DIGITAL',
                 'Conhecer os riscos online é o primeiro passo',
                 'Treinamentos reduzem falhas humanas',
                 'Compartilhar conhecimento ajuda toda a equipe'
             ),
-            ('ATUALIZAÇÕES DE SISTEMA',
+            ('ATUALIZACOES DE SISTEMA',
                 'Manter sistemas e apps sempre atualizados',
                 'Corrige falhas que poderiam ser exploradas',
                 'Evita brechas conhecidas por cibercriminosos'

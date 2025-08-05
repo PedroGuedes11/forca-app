@@ -503,7 +503,6 @@ button:hover {
     align-items: flex-start;
     text-align: left;
     padding: 20px;
-    overflow: scroll;
 }
 
 .info h3{
@@ -697,6 +696,10 @@ button:hover {
     header, footer{
         border: none;
         text-align: center;
+    }
+
+    .info{
+        overflow: scroll;
     }
 
 }
