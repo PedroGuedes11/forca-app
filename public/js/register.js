@@ -12,8 +12,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     const password = document.getElementById("password").value;
 
     if (!name || !email || !password) {
-        alert("Todos os campos são obrigatórios.");
-        return;
+        showMessage("ERRO!", "Todos os campos são obrigatórios.", ["register.html", "OK"]);
     }
     
     const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;

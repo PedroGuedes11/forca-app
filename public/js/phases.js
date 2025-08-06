@@ -1,4 +1,4 @@
-import { apiRequest, toggleMenu , toggleTutorial } from "./utils.js";
+import { apiRequest, showMessage, toggleMenu , toggleTutorial } from "./utils.js";
 
 // Mostrar o perfil do usuário
 async function showPhases() {
@@ -6,7 +6,7 @@ async function showPhases() {
     const token = localStorage.getItem("token");
 
     if (!user || !token) {
-        alert("Você precisa estar logado para acessar esta página.");
+        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
         logout();
         return;
     }
@@ -15,7 +15,7 @@ async function showPhases() {
         await loadUserEnergy(); // Carrega os pontos de energia do usuário
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
-        alert("Erro ao carregar o perfil. Faça login novamente.");
+        showMessage("ERRO!", "Erro ao carregar o perfil. Você será redirecionado para a tela de login.", ["login.html", "OK"]);
         logout();
     }
 }
@@ -101,7 +101,7 @@ async function loadPhases(user) {
         }
     } catch (error) {
         console.error("Erro ao carregar as fases:", error);
-        alert("Erro ao carregar as fases.");
+        showMessage("ERRO!", "Erro ao carregar as fases. Recarregando...", ["phases.html", "OK"]);
     }
 }
 

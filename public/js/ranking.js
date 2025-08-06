@@ -1,4 +1,4 @@
-import { apiRequest , toggleMenu , toggleTutorial } from "./utils.js";
+import { apiRequest , showMessage, toggleMenu , toggleTutorial } from "./utils.js";
 
 // Carrega o ranking na tela
 async function loadRanking() {
@@ -16,8 +16,8 @@ async function loadRanking() {
             )
             .join("");
     } catch (error) {
-        alert("Erro ao carregar o ranking.");
-        window.location.href="http://localhost:3000";
+        console.error("Erro ao carregar o ranking:", error);
+        showMessage("ERRO!", "Erro ao carregar o ranking.", ["phases.html", "OK"]);
     }
 }
 

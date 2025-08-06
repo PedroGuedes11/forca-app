@@ -6,7 +6,7 @@ async function showProfile() {
     const token = localStorage.getItem("token");
 
     if (!user || !token) {
-        alert("Você precisa estar logado para acessar esta página.");
+        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
         logout();
         return;
     }
@@ -14,7 +14,7 @@ async function showProfile() {
         await getUserInfos();
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
-        alert("Erro ao carregar o perfil. Faça login novamente.");
+        showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "Login"]);
         logout();
     }
 }

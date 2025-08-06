@@ -34,7 +34,7 @@ function getTokenFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get("token");
     if (!token) {
-        alert("Nenhum token recebido");
+        showMessage("ERRO!", "Token inválido ou ausente. Você será redirecionado para a página inicial.", ["https://forca-app.onrender.com", "OK"]);
         window.location.href = "https://forca-app.onrender.com";
     }
     return token;

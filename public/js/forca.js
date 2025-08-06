@@ -24,8 +24,7 @@ async function startGame() {
         startTimer(); // Inicia o timer de 30 segundos
     } catch (error) {
         console.error("Erro ao iniciar o jogo:", error);
-        alert("Erro ao carregar o jogo.");
-        window.location.href="phases.html";
+        showMessage("OPS!", "Ocorreu um erro ao iniciar o jogo, você será redirecionado.", ["phases.html", "OK"]);
     }
 }
 
@@ -34,8 +33,8 @@ function getPhaseFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
     const phase = urlParams.get("phase");
     if (!phase || isNaN(phase)) {
-        alert("Fase inválida.");
-        window.location.href = "phases.html";
+        showMessage("ERRO!", "Fase inválida.", ["phases.html", "OK"]);
+        return;
     }
     return parseInt(phase, 10);
 }
@@ -43,13 +42,11 @@ function getPhaseFromURL() {
 // Verifica se o usuário tem acesso à fase
 function verifyUserAccess(user, token, phase) {
     if (!token || !user) {
-        alert("Você precisa estar logado para jogar.");
-        window.location.href = "login.html";
+        showMessage("ERRO!", "Você precisa estar logado para jogar.", ["login.html", "Login"]);
         return;
     }
     if (user.current_phase < phase) {
-        alert("Você não tem acesso a esta fase.");
-        window.location.href = "phases.html";
+        showMessage("ERRO!", "Você não tem acesso a esta fase.", ["phases.html", "OK"]);
         return;
     }
 }
@@ -59,12 +56,12 @@ async function energyDecrement(){
     try {
         const response = await apiRequest("/user/decrement-energy", "POST");
         if (response.error) {
-            alert(response.message || "Energia insuficiente.");
-            window.location.href = "phases.html";
+            showMessage("ERRO!", response.message || "Erro ao decrementar energia.", ["phases.html", "OK"]);
+            return;
         }
     } catch (error) {
-        alert("Erro ao decrementar energia.");
-        window.location.href = "phases.html";
+        showMessage("ERRO!", "Erro ao decrementar energia.", ["phases.html", "OK"]);
+        return;
     }
 }
 
@@ -87,8 +84,9 @@ async function chooseWord(phase) {
             dynamicList[indexBlankSpace] = ' ';
         }
     } catch (error) {
-        console.error("Erro ao carregar a palavra da fase:", error);
-        throw error;
+        console.error("Erro ao carregar a palavra:", error);
+        showMessage("ERRO!", "Erro ao carregar a palavra da fase.", ["phases.html", "OK"]);
+        return;
     }
 }
 
