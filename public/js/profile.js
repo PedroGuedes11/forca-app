@@ -7,7 +7,6 @@ async function showProfile() {
 
     if (!user || !token) {
         showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
-        logout();
         return;
     }
     try {
@@ -15,7 +14,7 @@ async function showProfile() {
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
         showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "Login"]);
-        logout();
+        return
     }
 }
 
@@ -43,6 +42,7 @@ window.updateUserInfos = async function () {
     const updatedData = {};
     if (!(newName && newEmail)){
         showMessage("OPS!","Campos nome e email não podem ser vazios.",["profile.html","OK"]);
+        return;
     }
     else{
         if (newName){updatedData.name = newName;} else {

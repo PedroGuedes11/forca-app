@@ -24,7 +24,7 @@ async function resetPasswordScreen() {
                 showMessage("ERRO!", response.message, ["resetpass.html?token="+token, "Tente novamente"]);
             }
         } else {
-            showMessage("ERRO!","Os dois campos devem ser iguais.",["resetpass.html?token="+token,"OK"])
+            showMessage("ERRO!","Os dois campos devem ser iguais. Tente novamente.",["resetpass.html?token="+token,"OK"])
         }
     })
 };

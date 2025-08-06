@@ -6,8 +6,7 @@ async function showPhases() {
     const token = localStorage.getItem("token");
 
     if (!user || !token) {
-        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
-        logout();
+        showMessage("ERRO!", "Você precisa estar logado para acessar esta página. Você será redirecionado para a tela de login.", ["login.html", "OK"]);
         return;
     }
     try {
@@ -16,7 +15,7 @@ async function showPhases() {
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
         showMessage("ERRO!", "Erro ao carregar o perfil. Você será redirecionado para a tela de login.", ["login.html", "OK"]);
-        logout();
+        return;
     }
 }
 
@@ -102,6 +101,7 @@ async function loadPhases(user) {
     } catch (error) {
         console.error("Erro ao carregar as fases:", error);
         showMessage("ERRO!", "Erro ao carregar as fases. Recarregando...", ["phases.html", "OK"]);
+        return;
     }
 }
 

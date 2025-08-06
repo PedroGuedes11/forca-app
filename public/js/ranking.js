@@ -17,7 +17,7 @@ async function loadRanking() {
             .join("");
     } catch (error) {
         console.error("Erro ao carregar o ranking:", error);
-        showMessage("ERRO!", "Erro ao carregar o ranking.", ["phases.html", "OK"]);
+        showMessage("ERRO!", "Erro ao carregar o ranking. Você será redirecionado para a tela de fases.", ["phases.html", "OK"]);
     }
 }
 

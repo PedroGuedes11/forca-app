@@ -56,11 +56,11 @@ async function energyDecrement(){
     try {
         const response = await apiRequest("/user/decrement-energy", "POST");
         if (response.error) {
-            showMessage("ERRO!", response.message || "Erro ao decrementar energia.", ["phases.html", "OK"]);
+            console.error("Erro ao decrementar energia:", response.message);
             return;
         }
     } catch (error) {
-        showMessage("ERRO!", "Erro ao decrementar energia.", ["phases.html", "OK"]);
+        console.error("Erro ao decrementar energia:", error);
         return;
     }
 }
@@ -85,7 +85,7 @@ async function chooseWord(phase) {
         }
     } catch (error) {
         console.error("Erro ao carregar a palavra:", error);
-        showMessage("ERRO!", "Erro ao carregar a palavra da fase.", ["phases.html", "OK"]);
+        showMessage("ERRO!", "Erro ao carregar a palavra da fase. Voce sera redirecionado às fases para tentar novamente.", ["phases.html", "OK"]);
         return;
     }
 }
@@ -252,7 +252,6 @@ async function incrementEnergy() {
         if (response.error) {
             throw new Error(response.message || "Erro ao incrementar energia.");
         }
-        console.log("Energia incrementada com sucesso!");
     } catch (error) {
         console.error("Erro ao incrementar energia:", error);
     }
