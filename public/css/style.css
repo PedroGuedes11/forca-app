@@ -238,11 +238,13 @@ button:hover {
     border: black 2px solid;
     background-color: whitesmoke;
     border-radius: 10px;
+    
 }
 
 /* About */
 #about{
     max-width: 600px;
+    padding: 0px 20px;
 }
 
 #about>h2{
@@ -258,7 +260,12 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px auto; 
+    margin: 0px auto;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5); 
 }
 
 /* GAME */
@@ -271,6 +278,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 
 /* Hints */
@@ -696,6 +704,24 @@ button:hover {
     header, footer{
         border: none;
         text-align: center;
+    }
+
+    #about{
+        padding: 0px 5px;
+    }
+
+    #homepage-box{
+        gap:5px;
+    }
+    
+    #homepage-img{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #homepage-img img{
+        width: 60px;
+        margin: 5px;
     }
 
     .info{
