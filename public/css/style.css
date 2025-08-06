@@ -1,6 +1,5 @@
-/*GLOBAL ELEMENT STYLES*/
+/* GLOBAL ELEMENT STYLES */
 
-/* Reset CSS for all elements */
 * {
     margin: 0;
     padding: 0;
@@ -294,7 +293,7 @@ button:hover {
 }
 
 .carousel-item button{
-    min-width:130px;
+    min-width: 130px;
     height: 130px;
     margin: 10px auto;
 }
@@ -596,11 +595,11 @@ button:hover {
 #carousel-container {
     display: flex;
     transition: transform 0.5s ease-in-out;
-    width: 200px; /* 450 para 3, 150 para 1 */
+    width: 200px;
 }
   
 .carousel-item{
-    min-width: 200px; /* Mesmo tamanho da largura da .carousel-container */
+    min-width: 200px;
     height: 150px;
 }
 
@@ -706,6 +705,7 @@ button:hover {
         text-align: center;
     }
 
+    /* HOME PAGE MOBILE */
     #about{
         padding: 0px 5px;
     }
@@ -724,6 +724,7 @@ button:hover {
         margin: 5px;
     }
 
+    /* PROFILE MOBILE */
     .info{
         overflow: scroll;
     }
@@ -738,7 +739,7 @@ button:hover {
         background-color: white;
     }
 
-    /* MENU */
+    /* MENU TABLET */
     #hamburger{
         display: none;
     }
@@ -757,7 +758,7 @@ button:hover {
         z-index: unset;
     }
 
-    /* GAME */
+    /* GAME TABLET */
     #hints{
         flex-direction: row;
         padding: 5px;
@@ -767,17 +768,17 @@ button:hover {
         margin-top: 10px;
     }
     
-    /* HOMEPAGE */
+    /* HOMEPAGE TABLET */
     #homepage-box{
         flex-direction: row;
     }
 
-    /* PHASES */
+    /* PHASES TABLET */
     #carousel-container {
         width: 600px;
     }
     
-    /* PROFILE */
+    /* PROFILE TABLET */
     .userInfoCard #userId,#userEmail{
     margin-right: 40px;
 }
@@ -792,7 +793,7 @@ button:hover {
         background-color: white;
     }
 
-    /* MENU */
+    /* MENU DESKTOP */
     #hamburger{
         display: none;
     }
@@ -820,7 +821,7 @@ button:hover {
         background-color: #007BFF;
     }
 
-    /* GAME */
+    /* GAME DESKTOP */
     #hints{
         flex-direction: row;
         padding: 5px;
@@ -831,18 +832,18 @@ button:hover {
     }
     
 
-    /* HOMEPAGE */
+    /* HOMEPAGE DESKTOP */
     #homepage-box{
         flex-direction: row;
         width: 80%;
     }
 
-    /* PHASES */
+    /* PHASES DESKTOP */
     #carousel-container {
         width: 800px;
     }
 
-    /* PROFILE */
+    /* PROFILE DESKTOP */
     #profile-box{
         flex-direction: row-reverse;
         align-items: center;
