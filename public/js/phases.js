@@ -46,7 +46,7 @@ async function loadUserEnergy() {
 
             function updateTimer() {
                 if (secondsLeft <= 0) {
-                    timerSpan.textContent = "Regenerando...";
+                    timerSpan.textContent = "Regenerando... (Pode levar alguns segundos)";
                     clearInterval(energyInterval);
                     setTimeout(loadUserEnergy, 15000);
                     return;
