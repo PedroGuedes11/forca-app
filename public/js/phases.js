@@ -6,7 +6,7 @@ async function showPhases() {
     const token = localStorage.getItem("token");
 
     if (!user || !token) {
-        showMessage("ERRO!", "Você precisa estar logado para acessar esta página. Você será redirecionado para a tela de login.", ["login.html", "OK"]);
+        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "OK"]);
         return;
     }
     try {
@@ -14,7 +14,7 @@ async function showPhases() {
         await loadUserEnergy(); // Carrega os pontos de energia do usuário
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
-        showMessage("ERRO!", "Erro ao carregar o perfil. Você será redirecionado para a tela de login.", ["login.html", "OK"]);
+        showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "OK"]);
         return;
     }
 }

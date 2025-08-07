@@ -85,7 +85,7 @@ async function chooseWord(phase) {
         }
     } catch (error) {
         console.error("Erro ao carregar a palavra:", error);
-        showMessage("ERRO!", "Erro ao carregar a palavra da fase. Voce sera redirecionado às fases para tentar novamente.", ["phases.html", "OK"]);
+        showMessage("ERRO!", "Erro ao carregar a palavra da fase.", ["phases.html", "OK"]);
         return;
     }
 }
