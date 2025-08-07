@@ -42,7 +42,7 @@ export const login = async (req, res) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: true, message: "Credenciais inválidas." });
         }
-        const token = sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "1h" });
+        const token = sign({ id: user.id, email: user.email }, SECRET_KEY, { expiresIn: "30m" });
         return res.status(200).json({
             error: false,
             message: "Login bem-sucedido!",
