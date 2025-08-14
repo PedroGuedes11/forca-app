@@ -82,6 +82,11 @@ app.get("/forca.html", (req, res) => {
     res.sendFile(path.join(__dirname, "public", "html", "forca.html"));
 });
 
+//Redireciona para a pagina de material de apoio
+app.get("/material_de_apoio.pdf", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "html", "material_de_apoio.pdf"));
+});
+
 // Inicia o servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
