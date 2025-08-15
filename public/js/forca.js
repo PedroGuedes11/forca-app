@@ -79,9 +79,10 @@ async function chooseWord(phase) {
         secretHints[1] = response.hint2;
         secretHints[2] = response.hint3;
         dynamicList = Array(secretWord.length).fill("_");
-        if (secretWord.includes(" ")) {
-            const indexBlankSpace = secretWord.indexOf(" ");
-            dynamicList[indexBlankSpace] = ' ';
+        for (let i = 0; i < secretWord.length; i++) {
+            if (secretWord[i] === " ") {
+                dynamicList[i] = " ";
+            }
         }
     } catch (error) {
         console.error("Erro ao carregar a palavra:", error);
@@ -94,7 +95,8 @@ async function chooseWord(phase) {
 function mountWordOnScreen() {
     const screenWord = document.getElementById("secretword");
     screenWord.innerHTML = dynamicList
-        .map((char) => (char === ' ' ? `<div class="blank block">${char}<br></div>`: (`<div class="letters">${char === "_" ? "&nbsp" : char}</div>`)))
+        .map((char) => (
+            char === ' ' ? `<div class="blank">${char}<br></div>`: (`<div class="letters">${char === "_" ? "&nbsp" : char}</div>`)))
         .join("");
 }
 
