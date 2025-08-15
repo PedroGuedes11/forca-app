@@ -5,18 +5,19 @@ async function showPhases() {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
 
-    if (!user || !token) {
+    if (!(user || token)) {
         showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "OK"]);
         return;
     }
     try {
         await loadPhases(user); // Carrega as fases disponíveis
-        await loadUserEnergy(); // Carrega os pontos de energia do usuário
+        await loadUserEnergy(); // Carrega os pontos de energia do usuário   
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
         showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "OK"]);
         return;
     }
+    console.log("Perfil carregado com sucesso.");
 }
 
 // Carrega os pontos de energia do usuário
@@ -63,6 +64,7 @@ async function loadUserEnergy() {
             const timerSpan = document.getElementById("energy-timer");
             if (timerSpan) timerSpan.remove();
         }
+        console.log("Energia carregada com sucesso.");
     } catch (error) {
         console.error("Erro ao carregar energia:", error);
     }
@@ -103,6 +105,7 @@ async function loadPhases(user) {
         showMessage("ERRO!", "Erro ao carregar as fases. Recarregando...", ["phases.html", "OK"]);
         return;
     }
+    console.log("Fases carregadas com sucesso.");
 }
 
 // Inicializa o carrossel
@@ -133,6 +136,7 @@ function initializeCarousel() {
             updateCarousel();
         }
     };
+    console.log("Carrossel inicializado com sucesso.");
 };
 
 // Logout

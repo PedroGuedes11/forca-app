@@ -30,5 +30,5 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         }       
     } catch (error){
         showMessage("OPS!", error,["register.html","Tentar novamente"]);
-    };            
+    };
 });

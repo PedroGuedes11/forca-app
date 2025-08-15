@@ -3,8 +3,8 @@ import { getRanking, getWord , getPhasesLength } from "../controllers/gameContro
 
 const router = express.Router();
 
-router.get("/ranking", getRanking); // Recebe o ranking do banco de dados
-router.get("/word/:phaseId", getWord); // Recebe a string da fase correspondente do banco de dados
-router.get("/phases-length", getPhasesLength); // Recebe o numero de fases armazenadas no banco de dados
+router.get("/ranking", getRanking);
+router.get("/word/:phaseId", getWord)
+router.get("/phases-length", getPhasesLength);
 
 export default router;

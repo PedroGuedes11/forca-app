@@ -9,19 +9,20 @@ let timeLeft = 30; // Tempo inicial em segundos
 
 // Inicializa o jogo
 async function startGame() {
-    const token = localStorage.getItem("token"); // Obtém o token do localStorage
-    const user = JSON.parse(localStorage.getItem("user")); // Obtém o usuário do localStorage
-    const phase = getPhaseFromURL(); // Obtém a fase da URL
-    window.currentPhase = phase; // Armazena a fase globalmente para reutilização
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const phase = getPhaseFromURL();
+    window.currentPhase = phase;
 
     try {
-        verifyUserAccess(user, token, phase); // Verifica se o usuário tem acesso à fase
-        await energyDecrement(); // Decrementa um ponto de energia
-        await chooseWord(phase); // Carrega a palavra e as dicas do DB
-        mountWordOnScreen(); // Monta a palavra na tela
-        updateImage(); // Atualiza a imagem da forca
-        updateHints(); // Atualiza as dicas na tela
-        startTimer(); // Inicia o timer de 30 segundos
+        verifyUserAccess(user, token, phase);
+        await energyDecrement();
+        await chooseWord(phase);
+        mountWordOnScreen();
+        updateImage();
+        updateHints();
+        startTimer();
+        console.log("Jogo iniciado com sucesso.");
     } catch (error) {
         console.error("Erro ao iniciar o jogo:", error);
         showMessage("OPS!", "Ocorreu um erro ao iniciar o jogo, você será redirecionado.", ["phases.html", "OK"]);
@@ -36,6 +37,7 @@ function getPhaseFromURL() {
         showMessage("ERRO!", "Fase inválida.", ["phases.html", "OK"]);
         return;
     }
+    console.log("Fase recebida com sucesso.");
     return parseInt(phase, 10);
 }
 
@@ -49,6 +51,7 @@ function verifyUserAccess(user, token, phase) {
         showMessage("ERRO!", "Você não tem acesso a esta fase.", ["phases.html", "OK"]);
         return;
     }
+    console.log("Acesso à fase verificado com sucesso.");
 }
 
 // Decrementa um ponto de energia sempre que a pagina carrega
@@ -59,6 +62,7 @@ async function energyDecrement(){
             console.error("Erro ao decrementar energia:", response.message);
             return;
         }
+        console.log("Energia decrementada com sucesso.");
     } catch (error) {
         console.error("Erro ao decrementar energia:", error);
         return;
@@ -84,6 +88,7 @@ async function chooseWord(phase) {
                 dynamicList[i] = " ";
             }
         }
+        console.log("Palavra e dicas carregadas com sucesso.");
     } catch (error) {
         console.error("Erro ao carregar a palavra:", error);
         showMessage("ERRO!", "Erro ao carregar a palavra da fase.", ["phases.html", "OK"]);
@@ -98,6 +103,7 @@ function mountWordOnScreen() {
         .map((char) => (
             char === ' ' ? `<div class="blank">${char}<br></div>`: (`<div class="letters">${char === "_" ? "&nbsp" : char}</div>`)))
         .join("");
+    console.log("Palavra montada na tela.");
 }
 
 // Implementa o carousel de dicas
@@ -144,12 +150,12 @@ window.verifyLetter = function (letter) {
 
     if (secretWord.includes(letter)) {
         updateDynamicList(letter);
-        button.style.backgroundColor = "#008000"; // Verde para acerto
+        button.style.backgroundColor = "#008000";
     } else {
         attempts--;
         updateImage();
         updateHints();
-        button.style.backgroundColor = "#C71585"; // Vermelho para erro
+        button.style.backgroundColor = "#C71585";
     }
 
     mountWordOnScreen();
@@ -163,12 +169,14 @@ function updateDynamicList(letter) {
             dynamicList[i] = letter;
         }
     }
+    console.log("Lista dinâmica atualizada.");
 }
 
 // Atualiza a imagem da forca
 function updateImage() {
     const image = document.getElementById("image");
     image.innerHTML = `<img src='../img/forca/forca0${6 - attempts}.png' alt='img-forca' id='img-forca'></img>`;
+    console.log("Imagem da forca atualizada.");
 }
 
 // Atualiza as dicas na tela
@@ -189,6 +197,7 @@ function updateHints() {
             document.getElementById("nextHintBtn").click();
         }
     }
+    console.log("Dicas atualizadas.");
 }
 
 // Inicia o timer de 30 segundos
@@ -217,6 +226,7 @@ function startTimer() {
             }
         }
     }, 1000); // Atualiza a cada segundo
+    console.log("Timer iniciado.");
 }
 
 // Verifica se o jogo terminou
@@ -225,16 +235,16 @@ function verifyEndOfGame() {
     const user = JSON.parse(localStorage.getItem("user"));
     if (dynamicList.join("") === secretWord) {
         if (phase === user.current_phase){
-            updateLocalStorage(); //Atualiza o Local Storages
-            updateCurrentPhaseInDatabase() // Atualiza a fase no banco de dados
+            updateLocalStorage();
+            updateCurrentPhaseInDatabase()
         };
-        incrementEnergy(); // Reincrementa a energia do usuário
-        clearInterval(timer); // Para o timer
-        disableKeyboard(); // Desativa o teclado
+        incrementEnergy();
+        clearInterval(timer);
+        disableKeyboard();
         showMessage("PARABÉNS!", "Você venceu! a palavra era: "+secretWord,["phases.html","Escolher outra fase","forca.html?phase="+(phase+1),"Proxima fase"]);
     } else if (attempts === 0) {
-        clearInterval(timer); // Para o timer
-        disableKeyboard(); // Desativa o teclado
+        clearInterval(timer);
+        disableKeyboard();
         showMessage("OPS!", "Suas vidas acabaram!",["phases.html","Escolher outra fase","forca.html?phase="+phase,"Tentar novamente"]);
     }
 }
@@ -245,6 +255,7 @@ function updateLocalStorage(){
     userToUpdate.current_phase++
     localStorage.removeItem("user")
     localStorage.setItem("user",JSON.stringify(userToUpdate))
+    console.log("Local Storage atualizado com sucesso.");
 }
 
 // Reincrementa a energia do usuário
@@ -257,26 +268,29 @@ async function incrementEnergy() {
     } catch (error) {
         console.error("Erro ao incrementar energia:", error);
     }
+    console.log("Energia incrementada com sucesso.");
 }
 
 // Atualiza a fase do usuário no banco de dados caso ele passe de fase
 async function updateCurrentPhaseInDatabase() {
-    const newPhase = window.currentPhase + 1; // Reutiliza a fase armazenada
+    const newPhase = window.currentPhase + 1;
 
     try {
-        const response = await apiRequest("/user/update-phase", "POST", { newPhase }); // Envia apenas newPhase
-        if (!response.message==="Fase atualizada com sucesso!") {
-            throw new Error(response.error, "Erro ao atualizar a fase.");
+        const response = await apiRequest("/user/update-phase", "POST", { newPhase });
+        if (response.message !== "Fase atualizada com sucesso!") {
+            throw new Error(response.error || "Erro ao atualizar a fase.");
         }
     } catch (error) {
         console.error("Erro ao atualizar a fase no banco de dados:", error);
     }
+    console.log("Fase atualizada com sucesso.");
 }
 
 // Bloqueia o teclado
 function disableKeyboard() {
     const keywords = document.querySelectorAll(".keys button");
     keywords.forEach((button) => (button.disabled = true));
+    console.log("Teclado desativado.");
 }
 
 // Logout

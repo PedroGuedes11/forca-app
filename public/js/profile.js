@@ -5,7 +5,7 @@ async function showProfile() {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
 
-    if (!user || !token) {
+    if (!(user || token)) {
         showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
         return;
     }
@@ -13,11 +13,15 @@ async function showProfile() {
         await getUserInfos();
     } catch (error) {
         console.error("Erro ao carregar o perfil:", error);
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
         showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "Login"]);
         return
     }
+    console.log("Perfil carregado com sucesso.");
 }
 
+//Pega as informações do usuário
 async function getUserInfos(){
     const user = JSON.parse(localStorage.getItem("user"));
     document.getElementById("userId").innerText = user.id;
@@ -25,13 +29,20 @@ async function getUserInfos(){
     document.getElementById("userEmail").innerText = user.email;
     document.getElementById("currentPhase").innerText = user.current_phase;
     const response = await apiRequest("/user/get-energy", "GET")
-    document.getElementById("currentEnergy").innerText = response.current_energy + " / 5";
-    if (response.current_energy !== user.current_energy) {
-        localStorage.setItem("user", JSON.stringify({
-            ...user,
-            current_energy: response.current_energy
-        }));
+    if (!response.error){
+        document.getElementById("currentEnergy").innerText = response.current_energy + " / 5";
+        if (response.current_energy !== user.current_energy) {
+            localStorage.setItem("user", JSON.stringify({
+                ...user,
+                current_energy: response.current_energy
+            }));
+        }
+    } else{
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        showMessage("ERRO!", response.error, ["login.html", "Login"]);
     }
+    console.log("Informações do usuário recebidas com sucesso.");
 }
 
 // Alterar informações do usuário no banco de dados
@@ -40,7 +51,7 @@ window.updateUserInfos = async function () {
     const newName = document.getElementById("newName").value;
     const newEmail = document.getElementById("newEmail").value;
     const updatedData = {};
-    if (!(newName && newEmail)){
+    if (!newName && !newEmail){
         showMessage("OPS!","Campos nome e email não podem ser vazios.",["profile.html","OK"]);
         return;
     }
@@ -64,8 +75,10 @@ window.updateUserInfos = async function () {
             showMessage("ERRO!",response.message,["profile.html","OK"]);
         }
     }
+    console.log("Informações do usuário atualizadas com sucesso.");
 }
 
+// Logout
 window.logout = function (){
     localStorage.removeItem("user");
     localStorage.removeItem("token");
