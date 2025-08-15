@@ -95,7 +95,7 @@ async function loadPhases(user) {
         
         initializeCarousel();
         const nextBtn = document.getElementById("nextBtn"); 
-        for (let i=1;i<user.current_phase-1;i++){
+        for (let i=1;i<user.current_phase;i++){
             nextBtn.click();
         }
     } catch (error) {
