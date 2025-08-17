@@ -260,14 +260,14 @@ function verifyEndOfGame() {
         disableKeyboard();
         showMessage("PARABÉNS!", "Você venceu! a palavra era: "+secretWord,[
             'window.location.href="phases.html"',"Voltar às fases",
-            "forca.html?phase="+(phase+1),"Próxima fase",
+            'window.location.href="forca.html?phase='+(phase+1),"Próxima fase",
             'window.location.href="ranking.html"', "Ver ranking"]);
     } else if (attempts === 0) {
         clearInterval(timer);
         disableKeyboard();
         showMessage("OPS!", "Suas vidas acabaram!",[
             'window.location.href="phases.html"', "Voltar às fases",
-            'window.location.href="forca.html?phase='+(phase+1),"Tentar novamente",
+            'window.location.href="forca.html?phase='+(phase),"Tentar novamente",
             'window.location.href="ranking.html"', "Ver ranking"]);
     }
 }
