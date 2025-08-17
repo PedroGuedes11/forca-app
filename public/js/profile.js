@@ -70,7 +70,7 @@ window.updateUserInfos = async function () {
         if (response.message === "Informações atualizadas com sucesso!") {
             localStorage.removeItem("user");
             localStorage.setItem("user", '{"id":'+user.id+',"name":"'+updatedData.name+'","email":"'+updatedData.email+'","current_phase":'+user.current_phase+',"current_energy":'+user.current_energy+'}');
-            showMessage("SUCESSO!",response.message,["profile.html","OK"]);
+            showMessage("SUCESSO!",response.message,["window.location.href='profile.html'","OK"]);
         } else {
             showMessage("ERRO!",response.message,["closePopup()","OK"]);
         }
