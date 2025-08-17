@@ -267,7 +267,7 @@ function verifyEndOfGame() {
         disableKeyboard();
         showMessage("OPS!", "Suas vidas acabaram!",[
             'window.location.href="phases.html"', "Voltar às fases",
-            'window.location.href="forca.html?phase="+phase,"Tentar novamente"',
+            'window.location.href="forca.html?phase='+(phase+1),"Tentar novamente",
             'window.location.href="ranking.html"', "Ver ranking"]);
     }
 }
