@@ -38,7 +38,7 @@ function getPhaseFromURL() {
         showMessage("ERRO!", "Fase inválida.", ['window.location.href="phases.html"', "OK"]);
         return;
     }
-    console.log("Fase recebida com sucesso.");
+    console.log("Fase recebida.");
     return parseInt(phase, 10);
 }
 
