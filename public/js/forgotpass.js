@@ -13,7 +13,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     const email = document.getElementById("email").value.trim();
     const response = await apiRequest("/auth/forgot-password", "POST", { email });
     if (response.message==="Instruções enviadas para o email."){
-        showMessage("SUCESSO!",response.message,["https://forca-app.onrender.com","OK"]);
+        showMessage("SUCESSO!",response.message,["window.location.href='login.html'","OK"]);
     }
     else {
         showMessage("ERRO!",response.message,["closePopup()","Tentar novamente"]);

@@ -102,7 +102,7 @@ async function loadPhases(user) {
         }
     } catch (error) {
         console.error("Erro ao carregar as fases:", error);
-        showMessage("ERRO!", "Erro ao carregar as fases. Recarregando...", ["phases.html", "OK"]);
+        showMessage("ERRO!", "Erro ao carregar as fases. Recarregando...", ['window.location.href="phases.html"', "OK"]);
         return;
     }
     console.log("Fases carregadas com sucesso.");
