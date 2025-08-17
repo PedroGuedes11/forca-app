@@ -1,4 +1,4 @@
-import { showMessage , apiRequest , toggleMenu , toggleTutorial } from "./utils.js";
+import { showMessage , closePopup , apiRequest , toggleMenu , toggleTutorial } from "./utils.js";
 
 // função para mostrar o perfil do usuário
 async function showProfile() {
@@ -6,7 +6,7 @@ async function showProfile() {
     const token = localStorage.getItem("token");
 
     if (!(user || token)) {
-        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["login.html", "Login"]);
+        showMessage("ERRO!", "Você precisa estar logado para acessar esta página.", ["window.location.href='login.html'", "Login"]);
         return;
     }
     try {
@@ -15,7 +15,7 @@ async function showProfile() {
         console.error("Erro ao carregar o perfil:", error);
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["login.html", "Login"]);
+        showMessage("ERRO!", "Erro ao carregar o perfil. Faça login novamente.", ["window.location.href='login.html'", "Login"]);
         return
     }
     console.log("Perfil carregado com sucesso.");
@@ -40,7 +40,7 @@ async function getUserInfos(){
     } else{
         localStorage.removeItem("user");
         localStorage.removeItem("token");
-        showMessage("ERRO!", response.error, ["login.html", "Login"]);
+        showMessage("ERRO!", response.error, ["window.location.href='login.html'", "Login"]);
     }
     console.log("Informações do usuário recebidas com sucesso.");
 }
@@ -52,7 +52,7 @@ window.updateUserInfos = async function () {
     const newEmail = document.getElementById("newEmail").value;
     const updatedData = {};
     if (!newName && !newEmail){
-        showMessage("OPS!","Campos nome e email não podem ser vazios.",["profile.html","OK"]);
+        showMessage("OPS!","Campos nome e email não podem ser vazios.",["closePopup()","OK"]);
         return;
     }
     else{
@@ -90,6 +90,9 @@ window.toggleMenu = toggleMenu;
 
 // Tutorial da pagina
 window.toggleTutorial = toggleTutorial;
+
+// Fecha o popup ao clicar fora dele
+window.closePopup = closePopup;
 
 // Chama a função ao carregar a página
 window.onload = showProfile;

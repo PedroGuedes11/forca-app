@@ -31,14 +31,21 @@ export function showMessage(title, message, buttons) {
 
     popupTitle.innerText = title;
     popupMessage.innerText = message;
-    if(buttons.length === 2){ // Apenas um botao
-        popupButtons.innerHTML = `<button onclick='window.location.href="`+buttons[0]+`"'>`+buttons[1]+`</button>`
-    } else if(buttons.length > 2){ // Dois botoes
-         popupButtons.innerHTML = `
-            <button onclick='window.location.href="`+buttons[0]+`"'>`+buttons[1]+`</button>
-            <button onclick='window.location.href="`+buttons[2]+`"'>`+buttons[3]+`</button>`
-    }
+    buttons.forEach((element, index) => {
+        if(index % 2 === 0){
+            popupButtons.innerHTML += `
+                <button onclick=`+element+`>`+buttons[index + 1]+`</button>
+            `;
+        }
+    });
     popup.classList.remove("hidden");
+};
+
+export const closePopup = function() {
+    const popup = document.getElementById("popup");
+    const popupButtons = document.getElementById("modal-buttons");
+    popupButtons.innerHTML = "";
+    popup.classList.add("hidden");
 };
 
 // Menu hamburger

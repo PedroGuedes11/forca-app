@@ -1,7 +1,10 @@
-import { apiRequest , showMessage, toggleMenu } from "./utils.js";
+import { closePopup, apiRequest , showMessage, toggleMenu } from "./utils.js";
 
 // Menu hamburger
 window.toggleMenu = toggleMenu;
+
+// Fecha o popup
+window.closePopup = closePopup;
 
 // Formulario para recuperaçao da senha
 document.querySelector("form").addEventListener("submit", async (e) => {
@@ -13,6 +16,6 @@ document.querySelector("form").addEventListener("submit", async (e) => {
         showMessage("SUCESSO!",response.message,["https://forca-app.onrender.com","OK"]);
     }
     else {
-        showMessage("ERRO!",response.message,["forgotpass.html","Tentar novamente"]);
+        showMessage("ERRO!",response.message,["closePopup()","Tentar novamente"]);
     }
 });

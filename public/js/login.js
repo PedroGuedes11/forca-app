@@ -1,7 +1,10 @@
-import { apiRequest, showMessage, toggleMenu } from "./utils.js";
+import { closePopup , apiRequest, showMessage, toggleMenu } from "./utils.js";
 
 // Menu hamburger
 window.toggleMenu = toggleMenu;
+
+// Fecha o popup
+window.closePopup = closePopup;
 
 // Formulario de login
 document.querySelector("form").addEventListener("submit", async (e) => {
@@ -13,8 +16,8 @@ document.querySelector("form").addEventListener("submit", async (e) => {
     if(!response.error){
         localStorage.setItem("user", JSON.stringify(response.user));
         localStorage.setItem("token", response.token);
-        showMessage("SUCESSO!", response.message, ["phases.html","OK"]);
+        showMessage("SUCESSO!", response.message, ['window.location.href="phases.html"', "OK"]);
     } else {
-        showMessage("ERRO!", response.message, ["login.html","Tentar novamente"]);
+        showMessage("ERRO!", response.message, ["closePopup()", "Tentar novamente"]);
     }
 });
