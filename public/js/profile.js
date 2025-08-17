@@ -62,18 +62,22 @@ window.updateUserInfos = async function () {
         if (newEmail) {updatedData.email = newEmail;} else {
             updatedData.email=user.email;
         }
-
-        if (Object.keys(updatedData).length === 0) {
-            showMessage("OPS!","Nenhum campo foi preenchido.",["profile.html","OK"]);
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(updatedData.email)) {
+            showMessage("ERRO!", "Formato de e-mail inválido.", ["closePopup()", "Tentar novamente"]);
+            return;
         }
-        const response = await apiRequest("/user/update-info", "PUT", updatedData);
-        if (response.message === "Informações atualizadas com sucesso!") {
-            localStorage.removeItem("user");
-            localStorage.setItem("user", '{"id":'+user.id+',"name":"'+updatedData.name+'","email":"'+updatedData.email+'","current_phase":'+user.current_phase+',"current_energy":'+user.current_energy+'}');
-            showMessage("SUCESSO!",response.message,["window.location.href='profile.html'","OK"]);
-        } else {
-            showMessage("ERRO!",response.message,["closePopup()","OK"]);
+        else{
+            const response = await apiRequest("/user/update-info", "PUT", updatedData);
+            if (response.message === "Informações atualizadas com sucesso!") {
+                localStorage.removeItem("user");
+                localStorage.setItem("user", '{"id":'+user.id+',"name":"'+updatedData.name+'","email":"'+updatedData.email+'","current_phase":'+user.current_phase+',"current_energy":'+user.current_energy+'}');
+                showMessage("SUCESSO!",response.message,["window.location.href='profile.html'","OK"]);
+            } else {
+                showMessage("ERRO!",response.message,["closePopup()","OK"]);
+            }
         }
+        
     }
     console.log("Informações do usuário atualizadas com sucesso.");
 }
