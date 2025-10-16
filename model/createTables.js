@@ -72,7 +72,7 @@ export async function setup() {
             await createCronSQL();
             console.log("Evento de regeneração de energia agendado!");
         } catch (err) {
-            console.warn("Não foi possível agendar o evento com node-cron. Verifique se a biblioteca está instalada.");
+            console.error("Erro ao agendar evento de regeneração de energia:", err);
         }
     } catch (err) {
         console.error("Erro ao criar tabelas ou função:", err);
